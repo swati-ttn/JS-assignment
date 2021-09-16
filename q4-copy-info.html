@@ -1,0 +1,27 @@
+<html>
+<head>
+<title> create a list of objects of Employee </title>
+<script type="text/javascript">
+    
+        var employees = [];
+            employees.push( {name:"Ram", age:30, salary:800, dob:"June 2, 1991"} );
+            employees.push( {name:"Lax", age:58, salary:8000, dob:"June 2, 1963"} );
+            console.log(employees);
+
+
+        var copiedemployees = JSON.parse(JSON.stringify(employees));
+        console.log(copiedemployees);
+
+</script>
+
+</head>
+<body>
+
+    <header>
+        <div class="header">
+            <h1 style="text-align:left;color:red;"> <strong>Copy in JavaScript ,Printed in console</strong></h1>
+        </div>
+    </header>
+        
+    </body>
+</html>

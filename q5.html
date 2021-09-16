@@ -1,0 +1,82 @@
+<html>
+<head>
+<title> create a list of objects of Employee </title>
+<script type="text/javascript">
+    
+        var employees = [];
+            employees.push( {name:"Ram", age:30, salary:800, dob:"June 2, 1991"} );
+            employees.push( {name:"Lax", age:58, salary:8000, dob:"June 2, 1963"} );
+            employees.push( {name:"Sita", age:62, salary:5000, dob:"June 2, 1959"} );
+            employees.push( {name:"Bharat", age:35, salary:3000, dob:"June 2, 1986"} );
+            employees.push( {name:"Shatru", age:40, salary:300, dob:"June 2, 1981"} );
+            employees.push( {name:"Ravana",age:60, salary:8000, dob:"June 2, 1961"} );
+            
+    function sortFunc()
+    {
+            employees.sort(function(a, b)
+            {return a.age - b.age;});
+
+            document.getElementById("disp").innerHTML=" ";
+            for(i=0; i<employees.length; i++)
+            {
+                document.getElementById("disp").innerHTML+=employees[i].age+'<br>';
+            }
+    }
+
+    function filterfunc()
+    {
+            const filteredemployee = employees.filter(emp => emp.salary>5000);
+            document.getElementById("disp_filter").innerHTML="";
+            for(i=0; i<filteredemployee.length; i++) 
+            {
+                document.getElementById("disp_filter").innerHTML+= filteredemployee[i].name+','+ filteredemployee[i].salary+','+ filteredemployee[i].age+','+ '<br>'; 
+            }         
+    }
+    
+    function groupage()
+    {
+        var older_emp = employees.filter(emp => emp.age>50);
+        var younger_emp = employees.filter(emp => emp.age<=50);
+
+        console.log("Group of older Employees",older_emp);
+        console.log("Group of younger Employees",younger_emp);
+    }
+    function groupsalaryage()
+    {
+        for(i=0; i<employees.length; i++) 
+        {
+             if(employees[i].salary<1000 && employees[i].age>20)
+             {
+                console.log("Salary",employees[i]);
+                employees[i].salary = employees[i].salary*5;
+                console.log("Revised salary",employees[i]);
+             }
+        }
+    }
+</script>
+
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1 style="text-align:left;color: dimgray;"> <strong>Employees</strong></h1>
+        </div>
+    </header>
+
+        <div>Click the button below to sort by Age.</div>
+        <button onclick="sortFunc()">Sort Now</button><br /><br />
+        <div id="disp"></div><br/><br/>
+
+        <div>Click the button below to Filter Salary > 5000.</div>
+        <button onclick="filterfunc()">Filter Now</button><br /><br />
+        <div id="disp_filter"></div><br/><br/>
+
+        <div>Click the button below for group age</div>
+        <button onclick="groupage()">Filter Now</button><br /><br />
+        <div id="item"></div><br /><br />
+
+        <div>Employees with salary less than 1000 and age more than 20. For them salary incrementby 5 times.</div>
+        <button onclick="groupsalaryage()">Revised</button><br /><br />
+        <div id="composed"></div>
+    </body>
+</html>
